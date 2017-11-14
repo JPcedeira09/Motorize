@@ -1,0 +1,31 @@
+# JP Podfile
+# platform :ios, '9.0'
+
+target 'Motorize' do
+
+  use_frameworks!
+
+  # Pods for appmotorize
+
+  target 'MotorizeTests' do
+
+    inherit! :search_paths
+
+    # Pods for testing appmotorize
+  end
+
+  target 'MotorizeUITests' do
+    inherit! :search_paths
+    # Pods for Motorize UI Test
+  end
+
+  # Pod do Alamofire para criar a conexão com a API Rest Motorize 
+  pod 'Alamofire', '~> 4.5'
+
+pod 'Firebase/Core'
+
+
+pod 'GoogleSignIn'
+
+
+end

@@ -1,0 +1,6 @@
+framework module Pods_MotorizeUITests {
+  umbrella header "Pods-MotorizeUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
