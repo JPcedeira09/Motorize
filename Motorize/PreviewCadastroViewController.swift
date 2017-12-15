@@ -77,7 +77,7 @@ class PreviewCadastroViewController: UIViewController {
         estadoLabel.text = " ENDEREÇO: \(enderecoCompleto)"
         enderecoLabel.text = "  \(enderecoResidencial)"
         
-        print(anunciante?.toJSON())
+        //print(anunciante?.toJSON())
     }
     
     func showInputDialog(titulo : String , msg : String) {
@@ -157,6 +157,7 @@ class PreviewCadastroViewController: UIViewController {
         //finally presenting the dialog box
         self.present(alertController, animated: true, completion: nil)
     }
+    
     @IBAction func editarEmail(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Mudar Email", message: "Digite o novo email.", preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "Alterar", style: .default) { (_) in
@@ -180,6 +181,7 @@ class PreviewCadastroViewController: UIViewController {
         //finally presenting the dialog box
         self.present(alertController, animated: true, completion: nil)
     }
+    
     @IBAction func editarTelefone(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Mudar Telefone", message: "Digite o novo Telefone.", preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "Alterar", style: .default) { (_) in
@@ -203,6 +205,7 @@ class PreviewCadastroViewController: UIViewController {
         //finally presenting the dialog box
         self.present(alertController, animated: true, completion: nil)
     }
+    
     @IBAction func editarCelular(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Mudar Celular", message: "Digite o novo celular.", preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "Alterar", style: .default) { (_) in
@@ -226,10 +229,10 @@ class PreviewCadastroViewController: UIViewController {
         //finally presenting the dialog box
         self.present(alertController, animated: true, completion: nil)
     }
+    
     @IBAction func editarEndereco(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Mudar Endeço", message: "Digite o novo Endereço.", preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "Alterar", style: .default) { (_) in
-            
             var endereco = ""
             
             //getting the input values from user
@@ -266,29 +269,21 @@ class PreviewCadastroViewController: UIViewController {
     
     @IBAction func Cadastrar(_ sender: Any) {
         
-        let JSON = (anunciante?.toJSON())!
-        let jsonData = try? JSONSerialization.data(withJSONObject: JSON )
-        
-        // create post request
-        let url = URL(string: "http://localhost:8088/motorizeApp1.1/motorize/anunciante/add")!
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        
-        // insert json data to the request
-        request.httpBody = jsonData
-        
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            guard let data = data, error == nil else {
-                print(error?.localizedDescription ?? "No data")
-                return
-            }
-            let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-            if let responseJSON = responseJSON as? [String: Any] {
-                print(responseJSON)
-            }
-        }
-        task.resume()
+        print(anunciante)
+        cadastroAnunciante( anunciante!)
     }
+    
+    func cadastroAnunciante( _ user: Anunciante){
+        let parametros : [String: Any]  = user.toDict(user) as [String:Any]
+        let postURL = URL(string:  "http://localhost:8088/motorizeApp1.2/motorize/anunciante/adicionarAnunciante")
+        
+      //  let header = ["Content-Type" : "application/json",
+                     // "Authorization" : MBUser.currentUser?.token ?? ""]
+        Alamofire.request(postURL!, method: .post, parameters:parametros , encoding: JSONEncoder.default).validate(contentType: ["application/json"]).responseJSON {  response in
+            print(response)
+        }
+    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewEstadoAdd = segue.destination as? PerfilImageViewController {

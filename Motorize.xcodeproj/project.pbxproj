@@ -8,9 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		1FE16A47B456B42B301F303A /* Pods_MotorizeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A9CA3BA76EC3E2038B5E7B /* Pods_MotorizeTests.framework */; };
+		361CEDA788D0235E1515F01A /* Pods_MotorizeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2F1FE47E8700984737 /* Pods_MotorizeUITests.framework */; };
 		390908D91FA1352D00C03D41 /* RedefinirSenhaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 390908D81FA1352D00C03D41 /* RedefinirSenhaViewController.swift */; };
 		391FA9251F880F5900D45BC0 /* IBDesignableGradient2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391FA9241F880F5900D45BC0 /* IBDesignableGradient2.swift */; };
 		391FA9271F88104800D45BC0 /* IBDesignableRaibown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 391FA9261F88104800D45BC0 /* IBDesignableRaibown.swift */; };
+		3925EF221FE47E8700984737 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF291FE47E8700984737 /* Alamofire.framework */; };
+		3925EF231FE47E8700984737 /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2A1FE47E8700984737 /* GoogleToolboxForMac.framework */; };
+		3925EF241FE47E8700984737 /* GTMOAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2B1FE47E8700984737 /* GTMOAuth2.framework */; };
+		3925EF251FE47E8700984737 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2C1FE47E8700984737 /* GTMSessionFetcher.framework */; };
+		3925EF261FE47E8700984737 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2D1FE47E8700984737 /* nanopb.framework */; };
+		3925EF271FE47E8700984737 /* Pods_MotorizeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2E1FE47E8700984737 /* Pods_MotorizeTests.framework */; };
+		3925EF281FE47E8700984737 /* Pods_MotorizeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2F1FE47E8700984737 /* Pods_MotorizeUITests.framework */; };
 		3928D1701F6DAF4400361E3E /* PessoaisViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3928D16F1F6DAF4400361E3E /* PessoaisViewController.swift */; };
 		3928D1721F6DAF5900361E3E /* EstadoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3928D1711F6DAF5900361E3E /* EstadoViewController.swift */; };
 		3928D1741F6DAF6200361E3E /* CidadeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3928D1731F6DAF6200361E3E /* CidadeViewController.swift */; };
@@ -96,6 +104,7 @@
 		39E0024B1F6C4980000EE81A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E002491F6C4980000EE81A /* HomeViewController.swift */; };
 		39E0024C1F6C4980000EE81A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E002491F6C4980000EE81A /* HomeViewController.swift */; };
 		4D6412D46A64892140FA91BE /* Pods_Motorize.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C956CEE58B97BC7259EA8D6 /* Pods_Motorize.framework */; };
+		CCDD1BD21EACB39A80FBB56B /* Pods_MotorizeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2E1FE47E8700984737 /* Pods_MotorizeTests.framework */; };
 		E7A72FF87DE134FDCF224485 /* Pods_MotorizeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF6B32AA0DC0808B4CED9E8A /* Pods_MotorizeUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +131,13 @@
 		390908D81FA1352D00C03D41 /* RedefinirSenhaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedefinirSenhaViewController.swift; sourceTree = "<group>"; };
 		391FA9241F880F5900D45BC0 /* IBDesignableGradient2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableGradient2.swift; sourceTree = "<group>"; };
 		391FA9261F88104800D45BC0 /* IBDesignableRaibown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignableRaibown.swift; sourceTree = "<group>"; };
+		3925EF291FE47E8700984737 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3925EF2A1FE47E8700984737 /* GoogleToolboxForMac.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GoogleToolboxForMac.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3925EF2B1FE47E8700984737 /* GTMOAuth2.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTMOAuth2.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3925EF2C1FE47E8700984737 /* GTMSessionFetcher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = GTMSessionFetcher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3925EF2D1FE47E8700984737 /* nanopb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = nanopb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3925EF2E1FE47E8700984737 /* Pods_MotorizeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MotorizeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3925EF2F1FE47E8700984737 /* Pods_MotorizeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_MotorizeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3928D16F1F6DAF4400361E3E /* PessoaisViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PessoaisViewController.swift; sourceTree = "<group>"; };
 		3928D1711F6DAF5900361E3E /* EstadoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EstadoViewController.swift; sourceTree = "<group>"; };
 		3928D1731F6DAF6200361E3E /* CidadeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CidadeViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +208,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3925EF221FE47E8700984737 /* Alamofire.framework in Frameworks */,
+				3925EF231FE47E8700984737 /* GoogleToolboxForMac.framework in Frameworks */,
+				3925EF241FE47E8700984737 /* GTMOAuth2.framework in Frameworks */,
+				3925EF251FE47E8700984737 /* GTMSessionFetcher.framework in Frameworks */,
+				3925EF261FE47E8700984737 /* nanopb.framework in Frameworks */,
+				3925EF271FE47E8700984737 /* Pods_MotorizeTests.framework in Frameworks */,
+				3925EF281FE47E8700984737 /* Pods_MotorizeUITests.framework in Frameworks */,
 				4D6412D46A64892140FA91BE /* Pods_Motorize.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -201,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FE16A47B456B42B301F303A /* Pods_MotorizeTests.framework in Frameworks */,
+				CCDD1BD21EACB39A80FBB56B /* Pods_MotorizeTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,6 +233,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7A72FF87DE134FDCF224485 /* Pods_MotorizeUITests.framework in Frameworks */,
+				361CEDA788D0235E1515F01A /* Pods_MotorizeUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,13 +269,6 @@
 				398AB42B1F8D37630090094C /* TipoVeiculoViewController.swift */,
 			);
 			name = Anuncio;
-			sourceTree = "<group>";
-		};
-		398FB0661FC507B4009AC0C7 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "New Group";
 			sourceTree = "<group>";
 		};
 		39CF80891F87FD50007BF572 /* Utils */ = {
@@ -289,7 +307,6 @@
 		39E0010F1F6C1B67000EE81A /* Motorize */ = {
 			isa = PBXGroup;
 			children = (
-				398FB0661FC507B4009AC0C7 /* New Group */,
 				39CF80891F87FD50007BF572 /* Utils */,
 				3949B2D61F8720EC00CD52A7 /* Anuncio */,
 				3928D16E1F6DAECB00361E3E /* CotrollerHomes */,
@@ -378,6 +395,13 @@
 		F0EC554DFC1B6F1199792C44 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3925EF291FE47E8700984737 /* Alamofire.framework */,
+				3925EF2A1FE47E8700984737 /* GoogleToolboxForMac.framework */,
+				3925EF2B1FE47E8700984737 /* GTMOAuth2.framework */,
+				3925EF2C1FE47E8700984737 /* GTMSessionFetcher.framework */,
+				3925EF2D1FE47E8700984737 /* nanopb.framework */,
+				3925EF2E1FE47E8700984737 /* Pods_MotorizeTests.framework */,
+				3925EF2F1FE47E8700984737 /* Pods_MotorizeUITests.framework */,
 				4C956CEE58B97BC7259EA8D6 /* Pods_Motorize.framework */,
 				61A9CA3BA76EC3E2038B5E7B /* Pods_MotorizeTests.framework */,
 				DF6B32AA0DC0808B4CED9E8A /* Pods_MotorizeUITests.framework */,
@@ -533,13 +557,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Motorize-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		26AE1021D582659DF7E61CBA /* [CP] Check Pods Manifest.lock */ = {
@@ -548,13 +575,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MotorizeTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5993B203DF06072549953E36 /* [CP] Embed Pods Frameworks */ = {
@@ -578,13 +608,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MotorizeUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6AEA4E293895BC16E2B6DF3D /* [CP] Embed Pods Frameworks */ = {
@@ -638,9 +671,20 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Motorize/Pods-Motorize-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -653,9 +697,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Motorize/Pods-Motorize-resources.sh",
+				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -905,10 +952,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UEJNTPTGX4;
 				INFOPLIST_FILE = Motorize/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MotorizeBrasil.Motorize;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -919,10 +967,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UEJNTPTGX4;
 				INFOPLIST_FILE = Motorize/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = MotorizeBrasil.Motorize;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

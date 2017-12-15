@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 
-class Anunciante {
+struct Anunciante {
     
     
      var id_anunciante  :  Int
@@ -43,20 +43,21 @@ class Anunciante {
 
     }
     
-    func toJSON () -> [String:Any]{
+    func toDict (_ anunciante : Anunciante) -> [String:Any]{
     
-        return ["id_anunciante":self.id_anunciante,
-        "nome":self.nome,
-        "CPF":self.CPF,
-        "senha":self.senha,
-        "celular":self.celular,
-        "telefone":self.telefone,
-        "tipo_pessoa":self.tipo_pessoa,
-        "status_servico":self.status_servico,
-        "endereco":self.endereco.toJSON(),
-        "email":self.email.toJSON()
+        return ["id_anunciante":anunciante.id_anunciante,
+        "nome":anunciante.nome,
+        "CPF":anunciante.CPF,
+        "senha":anunciante.senha,
+        "celular":anunciante.celular,
+        "telefone":anunciante.telefone,
+        "tipo_pessoa":anunciante.tipo_pessoa,
+        "status_servico":anunciante.status_servico,
+        "endereco":anunciante.endereco.toJSON(),
+        "email":anunciante.email.toJSON()
         ]
     }
+    
     init( anuncianteJSON : [String : Any]) {
         self.id_anunciante = anuncianteJSON["id_anunciante"] as? Int ?? 0
         self.nome =  anuncianteJSON["nome"] as? String ?? ""
