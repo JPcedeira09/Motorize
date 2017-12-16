@@ -279,10 +279,9 @@ class PreviewCadastroViewController: UIViewController {
         let parametros : [String: Any]  = user.toDict(user) as [String:Any]
         let postURL = URL(string:  "http://localhost:8088/motorizeApp1.2/motorize/anunciante/adicionarAnunciante")
         
-        //  let header = ["Content-Type" : "application/json",
-        // "Authorization" : MBUser.currentUser?.token ?? ""]
+          let header = ["Content-Type" : "application/json"]
         
-        Alamofire.request(postURL!, method: .post, parameters:parametros , encoding: JSONEncoding.default).validate(contentType: ["application/json"]).responseJSON {  response in
+        Alamofire.request(postURL!, method: .post, parameters:parametros , encoding: JSONEncoding.default,headers: header).validate(contentType: ["application/json"]).responseJSON {  response in
             print(response)
         }
         

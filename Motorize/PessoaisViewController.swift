@@ -29,7 +29,7 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
         var CIDADE = Cidade(id_estado: 0, id_cidade: 0, cidade: "")
         var ENDERECO = Endereco(id_endereco: 0, estado: ESTADO, cidade: CIDADE, cep: "", rua: "", numero: "", complemento: "", bairro: "", id_pessoa: 0)
         var email = Email(id_email: 0, email: "", id_anunciante: 0)
-        anunciante = Anunciante(id_anunciante: 0, nome: "", CPF: "", senha: "", endereco: ENDERECO, celular: "", telefone: "", email: email, tipo_pessoa: "", status_servico: "")
+        anunciante = Anunciante(id_pessoa: 0, nome: "", CPF: "", senha: "", endereco: ENDERECO, celular: "", telefone: "", email: email, tipo_pessoa: "", status: "")
         
         nomeCompletoField.delegate = self
         CPFField.delegate = self
