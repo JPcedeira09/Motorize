@@ -21,7 +21,7 @@ class EnderecoViewController: UIViewController , UITextFieldDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         proximo.layer.borderWidth = 1
-        proximo.layer.borderColor = UIColor.black.cgColor
+        proximo.layer.borderColor = UIColor.white.cgColor
         proximo.layer.cornerRadius = 10
  print(anunciante?.descrever())
 
@@ -47,14 +47,14 @@ class EnderecoViewController: UIViewController , UITextFieldDelegate{
         NotificationCenter.default.addObserver(self, selector: #selector(EnderecoViewController.keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         let keyboardHeight = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as AnyObject).cgRectValue.height
         UIView.animate(withDuration: 0.1, animations: { () -> Void in
             self.view.window?.frame.origin.y = -1 * keyboardHeight
             self.view.layoutIfNeeded()
         })
     }
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         UIView.animate(withDuration: 0.1, animations: { () -> Void in
             self.view.window?.frame.origin.y = 0
             self.view.layoutIfNeeded()

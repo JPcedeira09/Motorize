@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class EstadoViewController: UIViewController ,UIPickerViewDelegate , UIPickerViewDataSource{
     
@@ -25,18 +26,50 @@ class EstadoViewController: UIViewController ,UIPickerViewDelegate , UIPickerVie
         super.viewDidLoad()
        print(anunciante?.descrever())
 
-        session()
+        getEstados()
         self.pickerEstados.reloadAllComponents()
 
         for estado in self.ESTADOS{
             print("\(estado.estado) com ID: \(estado.id_estado)")
         }
         proximo.layer.borderWidth = 1
-        proximo.layer.borderColor = UIColor.black.cgColor
+        proximo.layer.borderColor = UIColor.white.cgColor
         proximo.layer.cornerRadius = 10
 }
     var ESTADOS = [Estado]()
     
+    func getEstados (){
+        Alamofire.request(
+            URL(string: "http://localhost:8088/motorizeApp1.2/motorize/filter/BuscarEstados")!,
+            method: .get)
+            .validate()
+            .responseJSON { (response) -> Void in
+                
+                switch response.result {
+                case .success:
+                    do {
+                        print(response)
+                        if let json = try JSONSerialization.jsonObject(with: response.data!, options: .allowFragments) as? [[String: Any]]{
+                            var responses  : [Estado] = []
+                            for response in json {
+                                let estado = Estado(json: response)
+                                responses.append(estado)
+                            }
+                            self.ESTADOS = responses
+                            self.pickerEstados.dataSource = self
+                            self.pickerEstados.delegate = self
+                            self.pickerEstados.reloadAllComponents()
+                        }
+                    } catch {
+                        print("error in JSONSerialization")
+                    }
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+    }
+    }
+    
+    /*
     func session (){
         let config = URLSessionConfiguration.default // Session Configuration
         let session = URLSession(configuration: config) // Load configuration into Session
@@ -64,7 +97,7 @@ class EstadoViewController: UIViewController ,UIPickerViewDelegate , UIPickerVie
         })
         task.resume()
     }
-    
+    */
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }

@@ -26,7 +26,7 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
         super.viewDidLoad()
         
         var ESTADO = Estado(id_estado: 0, sigla: "", estado: "")
-        var CIDADE = Cidade(id_estado: 0, id_cidade: 0, nome_cidade: "")
+        var CIDADE = Cidade(id_estado: 0, id_cidade: 0, cidade: "")
         var ENDERECO = Endereco(id_endereco: 0, estado: ESTADO, cidade: CIDADE, cep: "", rua: "", numero: "", complemento: "", bairro: "", id_pessoa: 0)
         var email = Email(id_email: 0, email: "", id_anunciante: 0)
         anunciante = Anunciante(id_anunciante: 0, nome: "", CPF: "", senha: "", endereco: ENDERECO, celular: "", telefone: "", email: email, tipo_pessoa: "", status_servico: "")
@@ -62,21 +62,21 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
         
         proximo.layer.borderWidth = 1
         proximo.layer.cornerRadius = 10
-        proximo.layer.borderColor = UIColor.black.cgColor
+        proximo.layer.borderColor = UIColor.white.cgColor
 
         NotificationCenter.default.addObserver(self, selector: #selector(PessoaisViewController.keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
         
         NotificationCenter.default.addObserver(self, selector: #selector(PessoaisViewController.keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    @objc  func keyboardWillShow(notification: NSNotification) {
         let keyboardHeight = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as AnyObject).cgRectValue.height
         UIView.animate(withDuration: 0.1, animations: { () -> Void in
             self.view.window?.frame.origin.y = -1 * keyboardHeight
             self.view.layoutIfNeeded()
         })
     }
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         UIView.animate(withDuration: 0.1, animations: { () -> Void in
             self.view.window?.frame.origin.y = 0
             self.view.layoutIfNeeded()

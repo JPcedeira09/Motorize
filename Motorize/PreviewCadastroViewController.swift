@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class PreviewCadastroViewController: UIViewController {
     
@@ -47,19 +48,19 @@ class PreviewCadastroViewController: UIViewController {
         editarCelular.layer.cornerRadius = 10
         editarEndereco.layer.cornerRadius = 10
         
-        editarNome.layer.borderColor = UIColor.black.cgColor
-        editarCPF.layer.borderColor = UIColor.black.cgColor
-        editarEmail.layer.borderColor = UIColor.black.cgColor
-        editarTelefone.layer.borderColor = UIColor.black.cgColor
-        editarCelular.layer.borderColor = UIColor.black.cgColor
-        editarEndereco.layer.borderColor = UIColor.black.cgColor
+        editarNome.layer.borderColor = UIColor.white.cgColor
+        editarCPF.layer.borderColor = UIColor.white.cgColor
+        editarEmail.layer.borderColor = UIColor.white.cgColor
+        editarTelefone.layer.borderColor = UIColor.white.cgColor
+        editarCelular.layer.borderColor = UIColor.white.cgColor
+        editarEndereco.layer.borderColor = UIColor.white.cgColor
         
         cadastrarButton.layer.borderWidth = 1
-        cadastrarButton.layer.borderColor = UIColor.black.cgColor
+        cadastrarButton.layer.borderColor = UIColor.white.cgColor
         cadastrarButton.layer.cornerRadius = 2
         
         print(anunciante?.descrever())
-        var cidade = (anunciante?.endereco.cidade.nome_cidade)!
+        var cidade = (anunciante?.endereco.cidade.cidade)!
         var estado = (anunciante?.endereco.estado.sigla)!
         enderecoCompleto = "\(cidade), \(estado)"
         
@@ -99,6 +100,7 @@ class PreviewCadastroViewController: UIViewController {
         alertController.addTextField { (textField) in
             textField.placeholder = "Enter Name"
         }
+        
         alertController.addTextField { (textField) in
             textField.placeholder = "Enter Email"
         }
@@ -113,6 +115,7 @@ class PreviewCadastroViewController: UIViewController {
     
     @IBAction func editarNome(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Mudar Nome", message: "Digite o novo nome.", preferredStyle: .alert)
+        
         let confirmAction = UIAlertAction(title: "Alterar", style: .default) { (_) in
             //getting the input values from user
             let name = alertController.textFields?[0].text
@@ -268,7 +271,6 @@ class PreviewCadastroViewController: UIViewController {
     }
     
     @IBAction func Cadastrar(_ sender: Any) {
-        
         print(anunciante)
         cadastroAnunciante( anunciante!)
     }
@@ -277,13 +279,15 @@ class PreviewCadastroViewController: UIViewController {
         let parametros : [String: Any]  = user.toDict(user) as [String:Any]
         let postURL = URL(string:  "http://localhost:8088/motorizeApp1.2/motorize/anunciante/adicionarAnunciante")
         
-      //  let header = ["Content-Type" : "application/json",
-                     // "Authorization" : MBUser.currentUser?.token ?? ""]
-        Alamofire.request(postURL!, method: .post, parameters:parametros , encoding: JSONEncoder.default).validate(contentType: ["application/json"]).responseJSON {  response in
+        //  let header = ["Content-Type" : "application/json",
+        // "Authorization" : MBUser.currentUser?.token ?? ""]
+        
+        Alamofire.request(postURL!, method: .post, parameters:parametros , encoding: JSONEncoding.default).validate(contentType: ["application/json"]).responseJSON {  response in
             print(response)
         }
+        
     }
-
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewEstadoAdd = segue.destination as? PerfilImageViewController {

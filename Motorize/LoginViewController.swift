@@ -20,14 +20,14 @@ class LoginViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    @objc func keyboardWillShow(notification: NSNotification) {
         let keyboardHeight = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as AnyObject).cgRectValue.height
         UIView.animate(withDuration: 0.1, animations: { () -> Void in
             self.view.window?.frame.origin.y = -1 * keyboardHeight
             self.view.layoutIfNeeded()
         })
     }
-    func keyboardWillHide(notification: NSNotification) {
+    @objc func keyboardWillHide(notification: NSNotification) {
         UIView.animate(withDuration: 0.1, animations: { () -> Void in
             self.view.window?.frame.origin.y = 0
             self.view.layoutIfNeeded()

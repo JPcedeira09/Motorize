@@ -12,30 +12,30 @@ class Cidade {
     
     var id_estado : Int
     var id_cidade : Int
-    var nome_cidade : String
+    var cidade : String
     
     func toJSON()->[String:Any]{
      return ["id_estado":self.id_estado,
         "id_cidade":self.id_cidade,
-        "nome_cidade":self.nome_cidade]
+        "cidade":self.cidade]
     }
-    init(id_estado : Int ,id_cidade : Int ,nome_cidade : String) {
+    init(id_estado : Int ,id_cidade : Int ,cidade : String) {
         self.id_estado = id_estado
         self.id_cidade = id_cidade
-        self.nome_cidade = nome_cidade
+        self.cidade = cidade
     }
     
     // Extração da Cidade
     init(json : [String : Any]) {
         self.id_estado = json["id_estado"] as? Int ?? 0
         self.id_cidade = json["id_cidade"] as? Int ?? 0
-        self.nome_cidade = json["nome_cidade"] as? String ?? ""
+        self.cidade = json["cidade"] as? String ?? ""
     }
     
     required init?(coder aDecoder: NSCoder) {
         // Extração do basico do Anunciante
         self.id_estado = aDecoder.decodeObject(forKey :"id_estado") as? Int ?? 0
         self.id_cidade = aDecoder.decodeObject(forKey :"id_cidade") as? Int ?? 0
-        self.nome_cidade = aDecoder.decodeObject(forKey :"nome_cidade") as? String ?? ""
+        self.cidade = aDecoder.decodeObject(forKey :"cidade") as? String ?? ""
     }
 }

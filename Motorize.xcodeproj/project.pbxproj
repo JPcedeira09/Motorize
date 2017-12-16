@@ -15,7 +15,7 @@
 		3925EF221FE47E8700984737 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF291FE47E8700984737 /* Alamofire.framework */; };
 		3925EF231FE47E8700984737 /* GoogleToolboxForMac.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2A1FE47E8700984737 /* GoogleToolboxForMac.framework */; };
 		3925EF241FE47E8700984737 /* GTMOAuth2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2B1FE47E8700984737 /* GTMOAuth2.framework */; };
-		3925EF251FE47E8700984737 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2C1FE47E8700984737 /* GTMSessionFetcher.framework */; };
+		3925EF251FE47E8700984737 /* GTMSessionFetcher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2C1FE47E8700984737 /* GTMSessionFetcher.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		3925EF261FE47E8700984737 /* nanopb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2D1FE47E8700984737 /* nanopb.framework */; };
 		3925EF271FE47E8700984737 /* Pods_MotorizeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2E1FE47E8700984737 /* Pods_MotorizeTests.framework */; };
 		3925EF281FE47E8700984737 /* Pods_MotorizeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3925EF2F1FE47E8700984737 /* Pods_MotorizeUITests.framework */; };
@@ -673,17 +673,31 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Motorize/Pods-Motorize-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ExpandableCell/ExpandableCell.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftSpinner/SwiftSpinner.framework",
+				"${BUILT_PRODUCTS_DIR}/TextFieldEffects/TextFieldEffects.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ExpandableCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSpinner.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TextFieldEffects.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -698,6 +712,8 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Motorize/Pods-Motorize-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 				"${PODS_ROOT}/GoogleSignIn/Resources/GoogleSignIn.bundle",
 			);
 			name = "[CP] Copy Pods Resources";

@@ -25,7 +25,7 @@ struct Anunciante {
      var  endereco : Endereco
     
     func descrever()-> String{
-        return " nome:\(self.nome)\n CPF:\(self.CPF) \n \(self.endereco.cidade.nome_cidade)\n Estado:\(self.endereco.estado.sigla) \n \(self.email.email)"
+        return " nome:\(self.nome)\n CPF:\(self.CPF) \n \(self.endereco.cidade.cidade)\n Estado:\(self.endereco.estado.sigla) \n \(self.email.email)"
     }
     
     init(id_anunciante : Int, nome : String, CPF : String, senha : String, endereco : Endereco, celular : String, telefone : String, email : Email, tipo_pessoa : String, status_servico : String){

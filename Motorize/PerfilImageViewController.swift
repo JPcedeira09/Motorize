@@ -21,7 +21,7 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         proximo.layer.borderWidth = 1
-        proximo.layer.borderColor = UIColor.black.cgColor
+        proximo.layer.borderColor = UIColor.white.cgColor
         proximo.layer.cornerRadius = 10
 
         print(anunciante?.descrever())
