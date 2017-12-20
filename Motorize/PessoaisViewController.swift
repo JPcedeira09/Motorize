@@ -38,7 +38,7 @@ class PessoaisViewController: UIViewController {
         var cidade = Cidade(id_estado: 0, id_cidade: 0, cidade: "")
         endereco = Endereco(id_endereco: 0, estado: estado, cidade: cidade, cep: "", rua: "", numero: "", complemento: "", bairro: "", id_pessoa: 0)
         email = Email(id_email: 0, email: "", id_anunciante: 0)
-        anunciante = Anunciante(id_pessoa: 0, nome: "", CPF: "", senha: "", celular: "", telefone: "", tipo_pessoa: "", status: "")
+        anunciante = Anunciante(id_pessoa: 0, nome: "", CPF: "", senha: "", celular: "", telefone: "", tipo_pessoa: "", status: "N")
         
         nomeCompletoField.delegate = self
         CPFField.delegate = self
@@ -80,12 +80,11 @@ class PessoaisViewController: UIViewController {
     @IBAction func SegmentedControl(_ sender: Any) {
         switch segmentedPessoa.selectedSegmentIndex {
         case 0:
-            
             anunciante?.tipo_pessoa = "Pessoa Fisica"
         case 1 :
             anunciante?.tipo_pessoa = "Pessoa Juridica"
         default:
-            break;
+            anunciante?.tipo_pessoa = "Pessoa Fisica"
         }
     }
     

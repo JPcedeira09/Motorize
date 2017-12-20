@@ -281,7 +281,13 @@ class PreviewCadastroViewController: UIViewController {
         let header = ["Content-Type" : "application/json"]
         
         Alamofire.request(postURL!, method: .post, parameters:parametros , encoding: JSONEncoding.default,headers: header).validate(contentType: ["application/json"]).responseJSON {  response in
-            print(response)
+            
+            switch response.result {
+            case .success(let data):
+                print(data)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
     }
     
