@@ -12,24 +12,22 @@ import UIKit
 
 struct Anunciante {
     
+    var id_pessoa  :  Int
+    var nome  :  String
+    var CPF : String
+    var senha : String
+    // private Date ano_nascimento;
+    var telefone : String
+    var celular : String
+    var tipo_pessoa : String
+    var status : String
     
-     var id_pessoa  :  Int
-     var nome  :  String
-     var CPF : String
-     var senha : String
-     var celular : String
-     var telefone : String
-     var tipo_pessoa : String
-     var status : String
-     var email : Email
-     var  endereco : Endereco
     
     func descrever()-> String{
-        return " nome:\(self.nome)\n CPF:\(self.CPF) \n \(self.endereco.cidade.cidade)\n Estado:\(self.endereco.estado.sigla) \n \(self.email.email)"
+        return " nome:\(self.nome)\n CPF:\(self.CPF)"
     }
     
-    init(id_pessoa : Int, nome : String, CPF : String, senha : String, endereco : Endereco, celular : String, telefone : String, email : Email, tipo_pessoa : String, status : String){
-        
+    init(id_pessoa : Int, nome : String, CPF : String, senha : String, celular : String, telefone : String, tipo_pessoa : String, status : String){
         self.id_pessoa = id_pessoa
         self.nome = nome
         self.CPF = CPF
@@ -38,23 +36,17 @@ struct Anunciante {
         self.telefone = telefone
         self.tipo_pessoa = tipo_pessoa
         self.status = status
-        self.endereco = endereco
-        self.email = email
-
     }
     
     func toDict (_ anunciante : Anunciante) -> [String:Any]{
-    
         return ["id_pessoa":anunciante.id_pessoa,
-        "nome":anunciante.nome,
-        "CPF":anunciante.CPF,
-        "senha":anunciante.senha,
-        "celular":anunciante.celular,
-        "telefone":anunciante.telefone,
-        "tipo_pessoa":anunciante.tipo_pessoa,
-        "status":anunciante.status,
-        "endereco":anunciante.endereco.toJSON(),
-        "email":anunciante.email.toJSON()
+                "nome":anunciante.nome,
+                "CPF":anunciante.CPF,
+                "senha":anunciante.senha,
+                "celular":anunciante.celular,
+                "telefone":anunciante.telefone,
+                "tipo_pessoa":anunciante.tipo_pessoa,
+                "status":anunciante.status
         ]
     }
     
@@ -67,9 +59,6 @@ struct Anunciante {
         self.telefone = anuncianteJSON["telefone"] as? String ?? ""
         self.tipo_pessoa = anuncianteJSON["tipo_pessoa"] as? String ?? ""
         self.status = anuncianteJSON["status"] as? String ?? ""
-        self.email = Email(json:anuncianteJSON["email"] as? [String : Any] ?? [:])
-
-        self.endereco = Endereco(json: anuncianteJSON["endereco_anunciante"] as? [String : Any] ?? [:])
     }
 }
 

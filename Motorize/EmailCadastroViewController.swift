@@ -11,6 +11,8 @@ import UIKit
 class EmailCadastroViewController: UIViewController , UITextFieldDelegate{
     
     var anunciante : Anunciante?
+    var endereco : Endereco?
+    var email : Email?
     
     @IBOutlet weak var EmailField: UITextField!
     @IBOutlet weak var CONFField: UITextField!
@@ -23,9 +25,9 @@ class EmailCadastroViewController: UIViewController , UITextFieldDelegate{
         proximo.layer.borderColor = UIColor.white.cgColor
         proximo.layer.cornerRadius = 10
 
-        if(anunciante?.email.email != ""){
-            EmailField.text = anunciante?.email.email
-            CONFField.text = anunciante?.email.email
+        if(email?.email != ""){
+            EmailField.text = email?.email
+            CONFField.text = email?.email
         }
         
         EmailField.delegate = self
@@ -82,14 +84,18 @@ class EmailCadastroViewController: UIViewController , UITextFieldDelegate{
         if CONFField.text != EmailField.text {
             Alert_MSG(titulo: "Preencha Todos os Campos", menssagem: "Por Favor, Digite Novamente Seu Email, Emails Divergentes")
         }
-        anunciante?.email.email = EmailField.text!
+        email?.email = EmailField.text!
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewEstadoAdd = segue.destination as? PerfilImageViewController {
             viewEstadoAdd.anunciante = anunciante
+            viewEstadoAdd.email = email
+
         }
         if let viewEstadoAdd = segue.destination as? EnderecoViewController {
             viewEstadoAdd.anunciante = anunciante
+            viewEstadoAdd.email = email
+
         }
         
     }

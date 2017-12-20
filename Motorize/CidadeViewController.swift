@@ -12,6 +12,7 @@ import Alamofire
 class CidadeViewController: UIViewController ,UIPickerViewDelegate , UIPickerViewDataSource{
     
     var anunciante : Anunciante?
+    var endereco : Endereco?
     
     var id_cidade :Int = 0
     var id_estado : Int = 0
@@ -36,7 +37,7 @@ class CidadeViewController: UIViewController ,UIPickerViewDelegate , UIPickerVie
     func getEstados (){
         
         Alamofire.request(
-            URL(string: "http://localhost:8088/motorizeApp1.2/motorize/filter/BuscarCidades/\((anunciante?.endereco.estado.id_estado)!)")!,
+            URL(string: "http://localhost:8088/motorizeApp1.2/motorize/filter/BuscarCidades/\((endereco?.estado.id_estado)!)")!,
             method: .get)
             .validate()
             .responseJSON { (response) -> Void in
@@ -128,17 +129,19 @@ class CidadeViewController: UIViewController ,UIPickerViewDelegate , UIPickerVie
     }
     
     @IBAction func SegueProximo(_ sender: UIButton) {
-        anunciante?.endereco.cidade.id_cidade = id_cidade
-        anunciante?.endereco.cidade.id_estado = id_estado
-        anunciante?.endereco.cidade.cidade = nome_cidade
+        endereco?.cidade.id_cidade = id_cidade
+        endereco?.cidade.id_estado = id_estado
+        endereco?.cidade.cidade = nome_cidade
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewEstadoAdd = segue.destination as? EnderecoViewController {
             viewEstadoAdd.anunciante = anunciante
+            viewEstadoAdd.endereco = endereco
         }
         if let viewEstadoAdd = segue.destination as? EstadoViewController {
             viewEstadoAdd.anunciante = anunciante
+            viewEstadoAdd.endereco = endereco
         }
     }
     

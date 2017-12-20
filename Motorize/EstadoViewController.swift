@@ -19,7 +19,8 @@ class EstadoViewController: UIViewController ,UIPickerViewDelegate , UIPickerVie
     @IBOutlet weak var proximo: UIButton!
     
     var anunciante : Anunciante?
-    
+    var endereco : Endereco?
+
     @IBOutlet weak var pickerEstados: UIPickerView!
     
     override func viewDidLoad() {
@@ -122,18 +123,22 @@ class EstadoViewController: UIViewController ,UIPickerViewDelegate , UIPickerVie
     }
     
     @IBAction func SegueProximo(_ sender: UIButton) {
-        anunciante?.endereco.estado.sigla = sigla
-        anunciante?.endereco.estado.estado = estado
-        anunciante?.endereco.estado.id_estado = id_estado
+        endereco?.estado.sigla = sigla
+        endereco?.estado.estado = estado
+        endereco?.estado.id_estado = id_estado
         
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewEstadoAdd = segue.destination as? CidadeViewController {
             viewEstadoAdd.anunciante = anunciante
+            viewEstadoAdd.endereco = endereco
+
         }
         if let viewEstadoAdd = segue.destination as? PessoaisViewController {
             viewEstadoAdd.anunciante = anunciante
+            viewEstadoAdd.endereco = endereco
+
         }
         
     }

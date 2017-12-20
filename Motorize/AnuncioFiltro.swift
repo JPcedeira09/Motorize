@@ -12,37 +12,21 @@ class AnuncioFiltro {
     
     
     var  id_anuncio: Int
-    
     var  id_carro_anuncio: Int
-    
     var  id_anunciante: Int
-    
     var  marca: String
-    
     var  modelo: String
-    
     var  versao: String
-    
     var  carroceria: String
-    
     var  tipo_veiculo: String
-    
     var  final_placa: Int
-    
     var  numero_portas: Int
-    
     var  cor: String
-    
     var  tipo_de_necessidade: String
-    
     var  opcional: String
-    
     var  blindagem: String
-    
     var  dataUm: Date
-    
     var  dataDois: Date
-    
     var  valorUM: Double
     
     var  valorDois: Double

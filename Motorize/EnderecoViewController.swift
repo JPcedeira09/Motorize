@@ -11,7 +11,8 @@ import UIKit
 class EnderecoViewController: UIViewController , UITextFieldDelegate{
     
     var anunciante : Anunciante?
-
+    var endereco : Endereco?
+    
     @IBOutlet weak var CEPField: UITextField!
     @IBOutlet weak var RUAField: UITextField!
     @IBOutlet weak var NUMField: UITextField!
@@ -23,19 +24,19 @@ class EnderecoViewController: UIViewController , UITextFieldDelegate{
         proximo.layer.borderWidth = 1
         proximo.layer.borderColor = UIColor.white.cgColor
         proximo.layer.cornerRadius = 10
- print(anunciante?.descrever())
-
-        if(anunciante?.endereco.cep != ""){
-            CEPField.text = anunciante?.endereco.cep
+        print(anunciante?.descrever())
+        
+        if(endereco?.cep != ""){
+            CEPField.text = endereco?.cep
         }
-        if(anunciante?.endereco.rua != ""){
-            RUAField.text = anunciante?.endereco.rua
+        if(endereco?.rua != ""){
+            RUAField.text = endereco?.rua
         }
-        if(anunciante?.endereco.numero != ""){
-            NUMField.text = anunciante?.endereco.numero
+        if(endereco?.numero != ""){
+            NUMField.text = endereco?.numero
         }
-        if(anunciante?.endereco.complemento != ""){
-            COMPLField.text = anunciante?.endereco.complemento
+        if(endereco?.complemento != ""){
+            COMPLField.text = endereco?.complemento
         }
         CEPField.delegate = self
         RUAField.delegate = self
@@ -65,7 +66,7 @@ class EnderecoViewController: UIViewController , UITextFieldDelegate{
         RUAField.resignFirstResponder()
         NUMField.resignFirstResponder()
         COMPLField.resignFirstResponder()
-
+        
         return true
     }
     
@@ -94,21 +95,25 @@ class EnderecoViewController: UIViewController , UITextFieldDelegate{
         if COMPLField.text == "" || COMPLField.text == nil {
             Alert_MSG(titulo: "Preencha Todos os Campos", menssagem: "O Campo Complemento Não Foi Preenchido")
         }
-        anunciante?.endereco.complemento = COMPLField.text!
-        anunciante?.endereco.rua = RUAField.text!
-        anunciante?.endereco.numero = NUMField.text!
-        anunciante?.endereco.cep = CEPField.text!
-            }
+        endereco?.complemento = COMPLField.text!
+        endereco?.rua = RUAField.text!
+        endereco?.numero = NUMField.text!
+        endereco?.cep = CEPField.text!
+    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewEstadoAdd = segue.destination as? EmailCadastroViewController {
             viewEstadoAdd.anunciante = anunciante
+            viewEstadoAdd.endereco = endereco
+
         }
         if let viewEstadoAdd = segue.destination as? CidadeViewController {
             viewEstadoAdd.anunciante = anunciante
+            viewEstadoAdd.endereco = endereco
+
         }
         
     }
     
-
+    
 }

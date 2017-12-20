@@ -12,7 +12,8 @@ class PerfilImageViewController: UIViewController ,
 UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     var anunciante : Anunciante?
-    
+    var email : Email?
+
     @IBOutlet weak var proximo: UIButton!
     let imagePicker = UIImagePickerController()
     
@@ -50,7 +51,6 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         imagePicker.allowsEditing = false
       if imagePicker.sourceType == .camera {
         print("Camera Acessada")
-
         }else{
              Alert_MSG(titulo: "Alerta", menssagem: "Acesso Negado a Sua Imagens, Vá em Ajustes")
         }
@@ -73,9 +73,12 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewEstadoAdd = segue.destination as? PreviewCadastroViewController {
             viewEstadoAdd.anunciante = anunciante
+            viewEstadoAdd.email = email
+
         }
         if let viewEstadoAdd = segue.destination as? EmailCadastroViewController {
             viewEstadoAdd.anunciante = anunciante
+            viewEstadoAdd.email = email
         }
         
     }

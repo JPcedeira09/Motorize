@@ -12,6 +12,8 @@ import Alamofire
 class PreviewCadastroViewController: UIViewController {
     
     var anunciante : Anunciante?
+    var email : Email?
+    var endereco : Endereco?
     
     @IBOutlet weak var nomeLabel: UILabel!
     @IBOutlet weak var CPFLabel: UILabel!
@@ -60,19 +62,19 @@ class PreviewCadastroViewController: UIViewController {
         cadastrarButton.layer.cornerRadius = 2
         
         print(anunciante?.descrever())
-        var cidade = (anunciante?.endereco.cidade.cidade)!
-        var estado = (anunciante?.endereco.estado.sigla)!
+        var cidade = (endereco?.cidade.cidade)!
+        var estado = (endereco?.estado.sigla)!
         enderecoCompleto = "\(cidade), \(estado)"
         
-        var rua = (anunciante?.endereco.rua)!
-        var numero = (anunciante?.endereco.numero)!
-        var complemento = (anunciante?.endereco.complemento)!
+        var rua = (endereco?.rua)!
+        var numero = (endereco?.numero)!
+        var complemento = (endereco?.complemento)!
         enderecoResidencial = "\(cidade), \(estado)"
         
         
         nomeLabel.text = " NOME: \((anunciante?.nome)!)"
         CPFLabel.text = " CPF: \((anunciante?.CPF)!)"
-        EmailLabel.text = " EMAIL: \((anunciante?.email.email)!)"
+        EmailLabel.text = " EMAIL: \((email?.email)!)"
         TelefoneLabel.text = " TELEFONE: \((anunciante?.telefone)!)"
         celularLabel.text = " CELULAR: \((anunciante?.celular)!)"
         estadoLabel.text = " ENDEREÇO: \(enderecoCompleto)"
@@ -167,7 +169,7 @@ class PreviewCadastroViewController: UIViewController {
             //getting the input values from user
             let mail = alertController.textFields?[0].text
             self.EmailLabel.text = "Email: " + mail!
-            self.anunciante?.email.email  = mail!
+            self.email?.email  = mail!
         }
         
         //the cancel action doing nothing
@@ -201,6 +203,7 @@ class PreviewCadastroViewController: UIViewController {
         alertController.addTextField { (textField) in
             textField.placeholder = "Telefone..."
         }
+        
         //adding the action to dialogbox
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
@@ -240,11 +243,11 @@ class PreviewCadastroViewController: UIViewController {
             
             //getting the input values from user
             let rua = alertController.textFields?[0].text
-            self.anunciante?.endereco.rua  = rua!
+            self.endereco?.rua  = rua!
             let numero = alertController.textFields?[1].text
-            self.anunciante?.endereco.numero  = numero!
+            self.endereco?numero  = numero!
             let compl = alertController.textFields?[2].text
-            self.anunciante?.endereco.complemento  = compl!
+            self.endereco?.complemento  = compl!
             endereco = "Endereço:\(rua!),\(numero!),\(compl!)"
             self.enderecoLabel.text = endereco
         }

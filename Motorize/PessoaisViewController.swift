@@ -10,7 +10,7 @@
 import UIKit
 
 class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPickerViewDataSource, UITextFieldDelegate{
-
+    
     @IBOutlet weak var nomeCompletoField: UITextField!
     @IBOutlet weak var ConfCPF: UITextField!
     @IBOutlet weak var CPFField: UITextField!
@@ -18,18 +18,21 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
     @IBOutlet weak var ConfSenha: UITextField!
     @IBOutlet weak var TelefoneField: UITextField!
     @IBOutlet weak var CelularField: UITextField!
+    
     var kbHeight: CGFloat!
     var anunciante : Anunciante?
+    var endereco : Endereco?
+    var email : Email?
     
     @IBOutlet weak var proximo: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var ESTADO = Estado(id_estado: 0, sigla: "", estado: "")
-        var CIDADE = Cidade(id_estado: 0, id_cidade: 0, cidade: "")
-        var ENDERECO = Endereco(id_endereco: 0, estado: ESTADO, cidade: CIDADE, cep: "", rua: "", numero: "", complemento: "", bairro: "", id_pessoa: 0)
-        var email = Email(id_email: 0, email: "", id_anunciante: 0)
-        anunciante = Anunciante(id_pessoa: 0, nome: "", CPF: "", senha: "", endereco: ENDERECO, celular: "", telefone: "", email: email, tipo_pessoa: "", status: "")
+        endereco?.estado = Estado(id_estado: 0, sigla: "", estado: "")
+        endereco?.cidade = Cidade(id_estado: 0, id_cidade: 0, cidade: "")
+        endereco = Endereco(id_endereco: 0, estado: ESTADO, cidade: CIDADE, cep: "", rua: "", numero: "", complemento: "", bairro: "", id_pessoa: 0)
+        email = Email(id_email: 0, email: "", id_anunciante: 0)
+        anunciante = Anunciante(id_pessoa: 0, nome: "", CPF: "", senha: "", celular: "", telefone: "", tipo_pessoa: "", status: "")
         
         nomeCompletoField.delegate = self
         CPFField.delegate = self
@@ -42,7 +45,7 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
         pickerSexo.delegate = self
         
         if(anunciante?.nome != ""){
-        nomeCompletoField.text = anunciante?.nome
+            nomeCompletoField.text = anunciante?.nome
         }
         if(anunciante?.CPF != ""){
             CPFField.text = anunciante?.CPF
@@ -58,12 +61,12 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
         if(anunciante?.celular != ""){
             CelularField.text = anunciante?.celular
         }
-   
+        
         
         proximo.layer.borderWidth = 1
         proximo.layer.cornerRadius = 10
         proximo.layer.borderColor = UIColor.white.cgColor
-
+        
         NotificationCenter.default.addObserver(self, selector: #selector(PessoaisViewController.keyboardWillShow), name:NSNotification.Name.UIKeyboardWillShow, object: nil);
         
         NotificationCenter.default.addObserver(self, selector: #selector(PessoaisViewController.keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
@@ -125,13 +128,11 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
         //anunciante.sexo = sexos[row]
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-        
     }
     
     func Alert_MSG(titulo : String , menssagem : String){
@@ -140,7 +141,7 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
         alertController.addAction(defaultAction)
         self.present(alertController, animated: true, completion: nil)
     }
-
+    
     @IBAction func SegueProximo(_ sender: UIButton) {
         
         if nomeCompletoField.text == "" || nomeCompletoField.text == nil {
@@ -164,13 +165,13 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
         if nomeCompletoField.text == "" || nomeCompletoField.text == nil {
             Alert_MSG(titulo: "Preencha Todos os Campos", menssagem: "O Campo Celular Não Foi Preenchido")
         }
-
         if SenhaField.text != ConfSenha.text  {
             Alert_MSG(titulo: "Preencha Todos os Campos", menssagem: "Por Favor, Digite Novamente Suas Senhas, Senhas Divergentes")
         }
         if CPFField.text != ConfCPF.text  {
             Alert_MSG(titulo: "Preencha Todos os Campos", menssagem: "Por Favor, Digite Novamente Seu CPF, CPF Divergente")
         }
+        
         anunciante?.nome = nomeCompletoField.text!
         anunciante?.CPF = CPFField.text!
         anunciante?.senha = SenhaField.text!
@@ -179,7 +180,7 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
         print(anunciante?.nome)
     }
     
-       override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewEstadoAdd = segue.destination as? EstadoViewController {
             viewEstadoAdd.anunciante = anunciante
         }
