@@ -9,13 +9,14 @@
 import UIKit
 
 class InicialViewController: UIViewController {
-
+    
     @IBOutlet weak var acessarContaButton: UIButton!
     @IBOutlet weak var criarContaButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-criarContaButton.layer.cornerRadius = 26
+        criarContaButton.layer.cornerRadius = 26
         acessarContaButton.layer.cornerRadius = 26
         acessarContaButton.layer.borderColor = UIColor.black.cgColor
         acessarContaButton.layer.borderWidth = 1
@@ -31,7 +32,7 @@ criarContaButton.layer.cornerRadius = 26
     }
     @IBAction func GoogleLogin(_ sender: UIButton) {
     }
-
-
-
+    
+    
+    
 }

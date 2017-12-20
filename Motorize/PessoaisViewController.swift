@@ -9,8 +9,16 @@
 
 import UIKit
 
-class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPickerViewDataSource, UITextFieldDelegate{
+class PessoaisViewController: UIViewController {
     
+    // Propert
+    var kbHeight: CGFloat!
+    var anunciante : Anunciante?
+    var endereco : Endereco?
+    var email : Email?
+    let sexos = ["Masculino","Feminino"]
+
+    //Outlets
     @IBOutlet weak var nomeCompletoField: UITextField!
     @IBOutlet weak var ConfCPF: UITextField!
     @IBOutlet weak var CPFField: UITextField!
@@ -18,19 +26,17 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
     @IBOutlet weak var ConfSenha: UITextField!
     @IBOutlet weak var TelefoneField: UITextField!
     @IBOutlet weak var CelularField: UITextField!
-    
-    var kbHeight: CGFloat!
-    var anunciante : Anunciante?
-    var endereco : Endereco?
-    var email : Email?
-    
+    @IBOutlet weak var pickerSexo: UIPickerView!
     @IBOutlet weak var proximo: UIButton!
+    @IBOutlet weak var segmentedPessoa: UISegmentedControl!
+    @IBOutlet weak var buttomConstraint: NSLayoutConstraint!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        endereco?.estado = Estado(id_estado: 0, sigla: "", estado: "")
-        endereco?.cidade = Cidade(id_estado: 0, id_cidade: 0, cidade: "")
-        endereco = Endereco(id_endereco: 0, estado: ESTADO, cidade: CIDADE, cep: "", rua: "", numero: "", complemento: "", bairro: "", id_pessoa: 0)
+        var estado = Estado(id_estado: 0, sigla: "", estado: "")
+        var cidade = Cidade(id_estado: 0, id_cidade: 0, cidade: "")
+        endereco = Endereco(id_endereco: 0, estado: estado, cidade: cidade, cep: "", rua: "", numero: "", complemento: "", bairro: "", id_pessoa: 0)
         email = Email(id_email: 0, email: "", id_anunciante: 0)
         anunciante = Anunciante(id_pessoa: 0, nome: "", CPF: "", senha: "", celular: "", telefone: "", tipo_pessoa: "", status: "")
         
@@ -62,7 +68,6 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
             CelularField.text = anunciante?.celular
         }
         
-        
         proximo.layer.borderWidth = 1
         proximo.layer.cornerRadius = 10
         proximo.layer.borderColor = UIColor.white.cgColor
@@ -71,33 +76,7 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
         
         NotificationCenter.default.addObserver(self, selector: #selector(PessoaisViewController.keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
     }
-    
-    @objc  func keyboardWillShow(notification: NSNotification) {
-        let keyboardHeight = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as AnyObject).cgRectValue.height
-        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-            self.view.window?.frame.origin.y = -1 * keyboardHeight
-            self.view.layoutIfNeeded()
-        })
-    }
-    @objc func keyboardWillHide(notification: NSNotification) {
-        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-            self.view.window?.frame.origin.y = 0
-            self.view.layoutIfNeeded()
-        })
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        nomeCompletoField.resignFirstResponder()
-        CPFField.resignFirstResponder()
-        ConfCPF.resignFirstResponder()
-        SenhaField.resignFirstResponder()
-        ConfSenha.resignFirstResponder()
-        TelefoneField.resignFirstResponder()
-        CelularField.resignFirstResponder()
-        return true
-    }
-    
-    
-    @IBOutlet weak var segmentedPessoa: UISegmentedControl!
+        
     @IBAction func SegmentedControl(_ sender: Any) {
         switch segmentedPessoa.selectedSegmentIndex {
         case 0:
@@ -110,36 +89,8 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
         }
     }
     
-    @IBOutlet weak var buttomConstraint: NSLayoutConstraint!
-    
-    let sexos = ["Masculino","Feminino"]
-    @IBOutlet weak var pickerSexo: UIPickerView!
-    
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return sexos.count
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return sexos[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //anunciante.sexo = sexos[row]
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-    }
-    
-    func Alert_MSG(titulo : String , menssagem : String){
-        let alertController = UIAlertController(title: titulo, message: menssagem, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(defaultAction)
-        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func SegueProximo(_ sender: UIButton) {
@@ -171,19 +122,74 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
         if CPFField.text != ConfCPF.text  {
             Alert_MSG(titulo: "Preencha Todos os Campos", menssagem: "Por Favor, Digite Novamente Seu CPF, CPF Divergente")
         }
-        
         anunciante?.nome = nomeCompletoField.text!
         anunciante?.CPF = CPFField.text!
         anunciante?.senha = SenhaField.text!
         anunciante?.telefone = TelefoneField.text!
         anunciante?.celular = CelularField.text!
-        print(anunciante?.nome)
+        print(anunciante?.nome as Any)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewEstadoAdd = segue.destination as? EstadoViewController {
             viewEstadoAdd.anunciante = anunciante
+            viewEstadoAdd.endereco = endereco
+            viewEstadoAdd.email = email
         }
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        nomeCompletoField.resignFirstResponder()
+        CPFField.resignFirstResponder()
+        ConfCPF.resignFirstResponder()
+        SenhaField.resignFirstResponder()
+        ConfSenha.resignFirstResponder()
+        TelefoneField.resignFirstResponder()
+        CelularField.resignFirstResponder()
+        return true
+    }
+    
+    func Alert_MSG(titulo : String , menssagem : String){
+        let alertController = UIAlertController(title: titulo, message: menssagem, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension PessoaisViewController : UIPickerViewDelegate , UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return sexos.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return sexos[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        //anunciante.sexo = sexos[row]
+    }
+}
+
+extension PessoaisViewController : UITextFieldDelegate {
+    
+    @objc  func keyboardWillShow(notification: NSNotification) {
+        let keyboardHeight = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as AnyObject).cgRectValue.height
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
+            self.view.window?.frame.origin.y = -1 * keyboardHeight
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    @objc func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
+            self.view.window?.frame.origin.y = 0
+            self.view.layoutIfNeeded()
+        })
+    }
 }

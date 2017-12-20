@@ -14,6 +14,8 @@ class PreviewCadastroViewController: UIViewController {
     var anunciante : Anunciante?
     var email : Email?
     var endereco : Endereco?
+    var enderecoCompleto = ""
+    var enderecoResidencial = ""
     
     @IBOutlet weak var nomeLabel: UILabel!
     @IBOutlet weak var CPFLabel: UILabel!
@@ -29,9 +31,6 @@ class PreviewCadastroViewController: UIViewController {
     @IBOutlet weak var editarCelular: UIButton!
     @IBOutlet weak var editarEndereco: UIButton!
     @IBOutlet weak var cadastrarButton: UIButton!
-    
-    var enderecoCompleto = ""
-    var enderecoResidencial = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,16 +60,15 @@ class PreviewCadastroViewController: UIViewController {
         cadastrarButton.layer.borderColor = UIColor.white.cgColor
         cadastrarButton.layer.cornerRadius = 2
         
-        print(anunciante?.descrever())
-        var cidade = (endereco?.cidade.cidade)!
-        var estado = (endereco?.estado.sigla)!
+        print(anunciante?.descrever() as Any)
+        var cidade = endereco?.cidade.cidade
+        var estado = endereco?.estado.sigla
         enderecoCompleto = "\(cidade), \(estado)"
         
-        var rua = (endereco?.rua)!
-        var numero = (endereco?.numero)!
-        var complemento = (endereco?.complemento)!
+        var rua = endereco?.rua
+        var numero = endereco?.numero
+        var complemento = endereco?.complemento
         enderecoResidencial = "\(cidade), \(estado)"
-        
         
         nomeLabel.text = " NOME: \((anunciante?.nome)!)"
         CPFLabel.text = " CPF: \((anunciante?.CPF)!)"
@@ -79,8 +77,6 @@ class PreviewCadastroViewController: UIViewController {
         celularLabel.text = " CELULAR: \((anunciante?.celular)!)"
         estadoLabel.text = " ENDEREÇO: \(enderecoCompleto)"
         enderecoLabel.text = "  \(enderecoResidencial)"
-        
-        //print(anunciante?.toJSON())
     }
     
     func showInputDialog(titulo : String , msg : String) {
@@ -245,7 +241,7 @@ class PreviewCadastroViewController: UIViewController {
             let rua = alertController.textFields?[0].text
             self.endereco?.rua  = rua!
             let numero = alertController.textFields?[1].text
-            self.endereco?numero  = numero!
+            self.endereco?.numero  = numero!
             let compl = alertController.textFields?[2].text
             self.endereco?.complemento  = compl!
             endereco = "Endereço:\(rua!),\(numero!),\(compl!)"
@@ -274,22 +270,20 @@ class PreviewCadastroViewController: UIViewController {
     }
     
     @IBAction func Cadastrar(_ sender: Any) {
-        print(anunciante)
-        cadastroAnunciante( anunciante!)
+        print(anunciante!)
+        cadastroAnunciante(anunciante!)
     }
     
     func cadastroAnunciante( _ user: Anunciante){
         let parametros : [String: Any]  = user.toDict(user) as [String:Any]
         let postURL = URL(string:  "http://localhost:8088/motorizeApp1.2/motorize/anunciante/adicionarAnunciante")
         
-          let header = ["Content-Type" : "application/json"]
+        let header = ["Content-Type" : "application/json"]
         
         Alamofire.request(postURL!, method: .post, parameters:parametros , encoding: JSONEncoding.default,headers: header).validate(contentType: ["application/json"]).responseJSON {  response in
             print(response)
         }
-        
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let viewEstadoAdd = segue.destination as? PerfilImageViewController {

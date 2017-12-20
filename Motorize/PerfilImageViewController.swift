@@ -8,15 +8,14 @@
 
 import UIKit
 
-class PerfilImageViewController: UIViewController ,
-UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class PerfilImageViewController: UIViewController {
     
     var anunciante : Anunciante?
+    var endereco : Endereco?
     var email : Email?
+    let imagePicker = UIImagePickerController()
 
     @IBOutlet weak var proximo: UIButton!
-    let imagePicker = UIImagePickerController()
-    
     @IBOutlet weak var imageProfile: UIImageView!
     
     override func viewDidLoad() {
@@ -24,29 +23,20 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         proximo.layer.borderWidth = 1
         proximo.layer.borderColor = UIColor.white.cgColor
         proximo.layer.cornerRadius = 10
-
-        print(anunciante?.descrever())
-
+        print(anunciante?.descrever() as Any)
         imagePicker.delegate = self
     }
-
-    func Alert_MSG(titulo : String , menssagem : String){
-        let alertController = UIAlertController(title: titulo, message: menssagem, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(defaultAction)
-        self.present(alertController, animated: true, completion: nil)
-    }
-
+    
     @IBAction func LibraryPicker(_ sender: UIButton) {
         imagePicker.allowsEditing = false
         if imagePicker.sourceType == .photoLibrary{
- 
             print("Imagens Acessadas")
         }else{
                Alert_MSG(titulo: "Alerta", menssagem: "Acesso Negado a Sua Imagens, Vá em Ajustes")
         }
         present(imagePicker, animated: true, completion: nil)
     }
+    
     @IBAction func CameraPicker(_ sender: UIButton) {
         imagePicker.allowsEditing = false
       if imagePicker.sourceType == .camera {
@@ -55,19 +45,6 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
              Alert_MSG(titulo: "Alerta", menssagem: "Acesso Negado a Sua Imagens, Vá em Ajustes")
         }
         present(imagePicker, animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: nil)
-    }
-
-     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        
-         let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
-        imageProfile.image = pickedImage
-        
-        print("Escolheu")
-        dismiss(animated: true, completion: nil)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -82,4 +59,29 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         }
         
     }
+    
+    func Alert_MSG(titulo : String , menssagem : String){
+        let alertController = UIAlertController(title: titulo, message: menssagem, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+}
+
+extension PerfilImageViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    private func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        imageProfile.image = pickedImage
+        
+        print("Escolheu")
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

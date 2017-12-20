@@ -8,23 +8,24 @@
 
 import UIKit
 
-class EnderecoViewController: UIViewController , UITextFieldDelegate{
+class EnderecoViewController: UIViewController {
     
     var anunciante : Anunciante?
     var endereco : Endereco?
+    var email : Email?
     
     @IBOutlet weak var CEPField: UITextField!
     @IBOutlet weak var RUAField: UITextField!
     @IBOutlet weak var NUMField: UITextField!
     @IBOutlet weak var COMPLField: UITextField!
-    
     @IBOutlet weak var proximo: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         proximo.layer.borderWidth = 1
         proximo.layer.borderColor = UIColor.white.cgColor
         proximo.layer.cornerRadius = 10
-        print(anunciante?.descrever())
+        print(anunciante?.descrever() as Any)
         
         if(endereco?.cep != ""){
             CEPField.text = endereco?.cep
@@ -48,38 +49,8 @@ class EnderecoViewController: UIViewController , UITextFieldDelegate{
         NotificationCenter.default.addObserver(self, selector: #selector(EnderecoViewController.keyboardWillHide), name:NSNotification.Name.UIKeyboardWillHide, object: nil);
     }
     
-    @objc func keyboardWillShow(notification: NSNotification) {
-        let keyboardHeight = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as AnyObject).cgRectValue.height
-        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-            self.view.window?.frame.origin.y = -1 * keyboardHeight
-            self.view.layoutIfNeeded()
-        })
-    }
-    @objc func keyboardWillHide(notification: NSNotification) {
-        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-            self.view.window?.frame.origin.y = 0
-            self.view.layoutIfNeeded()
-        })
-    }
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        CEPField.resignFirstResponder()
-        RUAField.resignFirstResponder()
-        NUMField.resignFirstResponder()
-        COMPLField.resignFirstResponder()
-        
-        return true
-    }
-    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-        
-    }
-    
-    func Alert_MSG(titulo : String , menssagem : String){
-        let alertController = UIAlertController(title: titulo, message: menssagem, preferredStyle: .alert)
-        let defaultAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alertController.addAction(defaultAction)
-        self.present(alertController, animated: true, completion: nil)
     }
     
     @IBAction func SegueProximo(_ sender: UIButton) {
@@ -105,15 +76,44 @@ class EnderecoViewController: UIViewController , UITextFieldDelegate{
         if let viewEstadoAdd = segue.destination as? EmailCadastroViewController {
             viewEstadoAdd.anunciante = anunciante
             viewEstadoAdd.endereco = endereco
+            viewEstadoAdd.email = email
 
         }
         if let viewEstadoAdd = segue.destination as? CidadeViewController {
             viewEstadoAdd.anunciante = anunciante
             viewEstadoAdd.endereco = endereco
-
+            viewEstadoAdd.email = email
         }
-        
     }
     
-    
+    func Alert_MSG(titulo : String , menssagem : String){
+        let alertController = UIAlertController(title: titulo, message: menssagem, preferredStyle: .alert)
+        let defaultAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(defaultAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+extension EnderecoViewController : UITextFieldDelegate{
+    @objc func keyboardWillShow(notification: NSNotification) {
+        let keyboardHeight = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as AnyObject).cgRectValue.height
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
+            self.view.window?.frame.origin.y = -1 * keyboardHeight
+            self.view.layoutIfNeeded()
+        })
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        UIView.animate(withDuration: 0.1, animations: { () -> Void in
+            self.view.window?.frame.origin.y = 0
+            self.view.layoutIfNeeded()
+        })
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        CEPField.resignFirstResponder()
+        RUAField.resignFirstResponder()
+        NUMField.resignFirstResponder()
+        COMPLField.resignFirstResponder()
+        
+        return true
+    }
 }

@@ -10,15 +10,15 @@ import Foundation
 
 class Endereco {
     
-    var  id_pessoa:Int
-    var  id_endereco:Int
-    var  cep: String
-    var  rua:String
-    var  numero:String
-    var  complemento:String
-    var  bairro:String
-    var  estado:Estado
-    var  cidade:Cidade
+    var id_pessoa:Int
+    var id_endereco:Int
+    var cep: String
+    var rua:String
+    var numero:String
+    var complemento:String
+    var bairro:String
+    var estado:Estado
+    var cidade:Cidade
     
     init (id_endereco:Int,estado:Estado , cidade:Cidade ,cep: String , rua:String ,numero:String ,complemento:String ,bairro:String,id_pessoa:Int){
         self.id_endereco = id_endereco
@@ -44,6 +44,7 @@ class Endereco {
         "cidade":self.cidade.toJSON()
         ]
     }
+    
     // Extração do Endereço
     init(json : [String : Any]) {
         self.id_endereco = json["id_endereco"] as? Int ?? 0
