@@ -244,8 +244,8 @@ class PreviewCadastroViewController: UIViewController {
             //getting the input values from user
             let rua = alertController.textFields?[0].text
             self.endereco?.rua  = rua!
-            let numero = alertController.textFields?[1].text
-            self.endereco?numero  = numero!
+            var numero = alertController.textFields?[1].text
+            self.endereco?.numero  = numero!
             let compl = alertController.textFields?[2].text
             self.endereco?.complemento  = compl!
             endereco = "Endereço:\(rua!),\(numero!),\(compl!)"

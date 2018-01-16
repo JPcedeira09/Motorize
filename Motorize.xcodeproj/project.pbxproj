@@ -248,7 +248,7 @@
 			name = CotrollerHomes;
 			sourceTree = "<group>";
 		};
-		3949B2D61F8720EC00CD52A7 /* Anuncio */ = {
+		3949B2D61F8720EC00CD52A7 /* ControllerAnuncio */ = {
 			isa = PBXGroup;
 			children = (
 				3949B2D71F87211200CD52A7 /* AnoAnuncianteViewController.swift */,
@@ -268,7 +268,7 @@
 				3949B2F31F87232B00CD52A7 /* VersaoAnuncianteViewController.swift */,
 				398AB42B1F8D37630090094C /* TipoVeiculoViewController.swift */,
 			);
-			name = Anuncio;
+			name = ControllerAnuncio;
 			sourceTree = "<group>";
 		};
 		39CF80891F87FD50007BF572 /* Utils */ = {
@@ -307,10 +307,8 @@
 		39E0010F1F6C1B67000EE81A /* Motorize */ = {
 			isa = PBXGroup;
 			children = (
+				6C86BFF5200CDCF800D25997 /* Controllers */,
 				39CF80891F87FD50007BF572 /* Utils */,
-				3949B2D61F8720EC00CD52A7 /* Anuncio */,
-				3928D16E1F6DAECB00361E3E /* CotrollerHomes */,
-				39E002401F6C2318000EE81A /* ControllerAcessos */,
 				39E0023F1F6C1BF8000EE81A /* Models */,
 				39E001101F6C1B67000EE81A /* AppDelegate.swift */,
 				39E001141F6C1B67000EE81A /* Main.storyboard */,
@@ -377,6 +375,16 @@
 				390908D81FA1352D00C03D41 /* RedefinirSenhaViewController.swift */,
 			);
 			name = ControllerAcessos;
+			sourceTree = "<group>";
+		};
+		6C86BFF5200CDCF800D25997 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3949B2D61F8720EC00CD52A7 /* ControllerAnuncio */,
+				3928D16E1F6DAECB00361E3E /* CotrollerHomes */,
+				39E002401F6C2318000EE81A /* ControllerAcessos */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		8C3514D26D35DE0F2577117B /* Pods */ = {

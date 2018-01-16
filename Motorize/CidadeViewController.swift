@@ -27,7 +27,7 @@ class CidadeViewController: UIViewController ,UIPickerViewDelegate , UIPickerVie
         proximo.layer.borderWidth = 1
         proximo.layer.borderColor = UIColor.white.cgColor
         proximo.layer.cornerRadius = 10
-        print("O ID do estado é:"+"\(anunciante?.endereco.estado.id_estado)")
+        print("O ID do estado é:"+"\(endereco?.estado.id_estado)")
         getEstados()
         //self.pickerCidade.reloadAllComponents()
     }

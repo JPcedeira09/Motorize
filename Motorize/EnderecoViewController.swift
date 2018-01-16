@@ -12,13 +12,14 @@ class EnderecoViewController: UIViewController , UITextFieldDelegate{
     
     var anunciante : Anunciante?
     var endereco : Endereco?
+    var email:Email?
     
     @IBOutlet weak var CEPField: UITextField!
     @IBOutlet weak var RUAField: UITextField!
     @IBOutlet weak var NUMField: UITextField!
     @IBOutlet weak var COMPLField: UITextField!
-    
     @IBOutlet weak var proximo: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         proximo.layer.borderWidth = 1

@@ -23,14 +23,16 @@ class PessoaisViewController: UIViewController , UIPickerViewDelegate , UIPicker
     var anunciante : Anunciante?
     var endereco : Endereco?
     var email : Email?
+    var cidade:Cidade?
+    var estado:Estado?
     
     @IBOutlet weak var proximo: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        endereco?.estado = Estado(id_estado: 0, sigla: "", estado: "")
-        endereco?.cidade = Cidade(id_estado: 0, id_cidade: 0, cidade: "")
-        endereco = Endereco(id_endereco: 0, estado: ESTADO, cidade: CIDADE, cep: "", rua: "", numero: "", complemento: "", bairro: "", id_pessoa: 0)
+        estado = Estado(id_estado: 0, sigla: "", estado: "")
+        cidade = Cidade(id_estado: 0, id_cidade: 0, cidade: "")
+        endereco = Endereco(id_endereco: 0, estado: estado!, cidade: cidade!, cep: "", rua: "", numero: "", complemento: "", bairro: "", id_pessoa: 0)
         email = Email(id_email: 0, email: "", id_anunciante: 0)
         anunciante = Anunciante(id_pessoa: 0, nome: "", CPF: "", senha: "", celular: "", telefone: "", tipo_pessoa: "", status: "")
         
