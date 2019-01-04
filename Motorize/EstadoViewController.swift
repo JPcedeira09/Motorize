@@ -39,7 +39,7 @@ class EstadoViewController: UIViewController ,UIPickerViewDelegate , UIPickerVie
 }
     var ESTADOS = [Estado]()
     
-    func getEstados (){
+    func get (){
         Alamofire.request(
             URL(string: "http://localhost:8088/motorizeApp1.2/motorize/filter/BuscarEstados")!,
             method: .get)

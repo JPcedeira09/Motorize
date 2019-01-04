@@ -15,7 +15,7 @@ class InicialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-criarContaButton.layer.cornerRadius = 26
+        criarContaButton.layer.cornerRadius = 26
         acessarContaButton.layer.cornerRadius = 26
         acessarContaButton.layer.borderColor = UIColor.black.cgColor
         acessarContaButton.layer.borderWidth = 1
